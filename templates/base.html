@@ -6,11 +6,12 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <nav>
-        <a href="/">Accueil</a>
-        <a href="/apropos">À propos</a>
-        <a href="/contact">Contact</a>
-    </nav>
+   <nav>
+    <a href="/">Accueil</a>
+    <a href="/apropos">À propos</a>
+    <a href="/contact">Contact</a>
+    <a href="/messages">Messages</a>
+   </nav>
 
     <div class="container">
         {% block content %}

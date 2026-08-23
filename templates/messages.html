@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Messages reçus</h1>
+
+    {% if messages %}
+        <ul class="liste-messages">
+        {% for msg in messages %}
+            <li>
+                <strong>{{ msg[1] }}</strong> ({{ msg[2] }}) - <em>{{ msg[4] }}</em><br>
+                {{ msg[3] }}
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>Aucun message pour le moment.</p>
+    {% endif %}
+{% endblock %}

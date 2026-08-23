@@ -1,11 +1,12 @@
 from flask import Flask, render_template, request
+from database import init_db, ajouter_message, get_messages
 
 app = Flask(__name__)
+init_db()
 
 @app.route("/")
 def accueil():
     return render_template("accueil.html", nom="Visiteur")
-
 
 @app.route("/apropos")
 def apropos():
@@ -18,14 +19,16 @@ def contact():
         email = request.form.get("email")
         message = request.form.get("message")
 
-        print(f"Nouveau message de {nom} ({email}) : {message}")
+        ajouter_message(nom, email, message)
 
         return render_template("contact.html", message_envoye=True, nom=nom)
 
     return render_template("contact.html")
 
-
-
+@app.route("/messages")
+def messages():
+    tous_les_messages = get_messages()
+    return render_template("messages.html", messages=tous_les_messages)
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=5000)
