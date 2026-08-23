@@ -40,3 +40,38 @@ nav a {
 nav a:hover {
     text-decoration: underline;
 }
+
+form {
+    text-align: left;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #4a4de7;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #3838b5;
+}
+
+.succes {
+    color: green;
+    font-weight: bold;
+    margin-top: 15px;
+}

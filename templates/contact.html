@@ -2,5 +2,21 @@
 
 {% block content %}
     <h1>Contact</h1>
-    <p>Vous pouvez me joindre à : monemail@exemple.com</p>
+
+    <form method="POST">
+        <label for="nom">Nom :</label><br>
+        <input type="text" id="nom" name="nom" required><br><br>
+
+        <label for="email">Email :</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="message">Message :</label><br>
+        <textarea id="message" name="message" rows="5" required></textarea><br><br>
+
+        <button type="submit">Envoyer</button>
+    </form>
+
+    {% if message_envoye %}
+        <p class="succes">Merci {{ nom }} ! Ton message a bien été envoyé.</p>
+    {% endif %}
 {% endblock %}
