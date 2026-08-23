@@ -1,10 +1,10 @@
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
 @app.route("/")
 def accueil():
-    return "<h1>Bienvenue sur mon site depuis Codespace !</h1>"
+    return render_template("accueil.html", nom="Visiteur")
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=5000)
