@@ -3,9 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Mon Site</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+
+
 <body>
-    <h1>Bonjour {{ nom }} !</h1>
-    <p>Bienvenue sur mon tout premier site Python.</p>
+    <div class="container">
+        <h1>Bonjour {{ nom }} !</h1>
+        <p>Bienvenue sur mon tout premier site Python.</p>
+    </div>
+   
 </body>
 </html>
