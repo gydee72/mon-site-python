@@ -1,8 +1,32 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, Response
+from functools import wraps
 from database import init_db, ajouter_message, get_messages
 
 app = Flask(__name__)
 init_db()
+
+# Identifiants (à changer !)
+ADMIN_USER = "gydee"
+ADMIN_PASSWORD = "Rbk7172*"
+
+def verifier_auth(username, password):
+    return username == ADMIN_USER and password == ADMIN_PASSWORD
+
+def authentification_requise():
+    return Response(
+        "Accès refusé. Merci de vous identifier.", 401,
+        {"WWW-Authenticate": 'Basic realm="Login requis"'}
+    )
+
+def login_requis(f):
+    @wraps(f)
+    def decorated(*args, **kwargs):
+        auth = request.authorization
+        if not auth or not verifier_auth(auth.username, auth.password):
+            return authentification_requise()
+        return f(*args, **kwargs)
+    return decorated
+
 
 @app.route("/")
 def accueil():
@@ -26,6 +50,7 @@ def contact():
     return render_template("contact.html")
 
 @app.route("/messages")
+@login_requis
 def messages():
     tous_les_messages = get_messages()
     return render_template("messages.html", messages=tous_les_messages)
