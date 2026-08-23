@@ -6,5 +6,17 @@ app = Flask(__name__)
 def accueil():
     return render_template("accueil.html", nom="Visiteur")
 
+
+@app.route("/apropos")
+def apropos():
+    return render_template("apropos.html")
+
+@app.route("/contact")
+def contact():
+    return render_template("contact.html")
+
+
+
+
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=5000)
